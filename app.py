@@ -615,4 +615,4 @@ def restart_game():
 
 if __name__ == "__main__":
     models.initialize()
-    app.run(debug=True, port =5009)
+    app.run(debug=True)
