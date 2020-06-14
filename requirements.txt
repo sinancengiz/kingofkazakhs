@@ -5,8 +5,6 @@ astor==0.7.1
 astroid==1.6.1
 astropy==2.0.3
 attrs==17.4.0
-
-
 Flask==0.12.2
 Flask-Cors==3.0.3
 peewee==3.13.3

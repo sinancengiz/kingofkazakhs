@@ -1,2 +1,2 @@
-# Pump_It_Up
-This is the kaggle competition project 
+# King of Kazakistan
+The game of the year
