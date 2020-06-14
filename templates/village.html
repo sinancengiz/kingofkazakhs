@@ -1,0 +1,96 @@
+{% extends "game_main.html" %}
+{% block content %}
+<div >
+    <div class="game_main_row col-12">
+        <div class="col-12 col-sm-4 col-md-4 col-lg-2">
+            <li class="list-group-item">King: {{player.player_name.capitalize()}} </li>
+        </div>
+        <div class="col-12 col-sm-4 col-md-4 col-lg-2">
+            <li class="list-group-item">Gold: {{player.gold}}</li>
+        </div>
+        <div class="col-12 col-sm-4 col-md-4 col-lg-2">
+            <li class="list-group-item">Food: {{player.food}}</li>
+        </div>
+        <div class="col-12 col-sm-4 col-md-4 col-lg-2">
+            <li class="list-group-item">Wood: {{player.wood}}</li>
+        </div>    
+        <div class="col-12 col-sm-4 col-md-4 col-lg-2">
+            <li class="list-group-item">Stone: {{player.stone}}</li>
+        </div>
+        <div class="col-12 col-sm-4 col-md-4 col-lg-2">
+            <li class="list-group-item">Population: {{population_data.total_population}}</li>
+        </div>
+    </div>
+</div>
+<div class="col-12">
+    <div style=" text-align: center ;margin-bottom: 25px;">
+            <h3>King {{player.player_name.capitalize()}}, Welcome to your City {{village_data.city_name.capitalize()}}</h3>
+            
+    </div>
+
+</div>
+
+<div class="game_main_row">
+<div class="col-12"  >
+    <div class=" col-sm-12 col-md-16 col-lg-4">
+
+            {% if population_data.total_population > 10000 %}
+            <h2 class="game_main_image_title"> {{village_data.city_name.capitalize()}}</h2>
+            <h2 class="village_image_city_level"> Level: {{village_data.city_level}}</h2>
+            <a href="{{url_for('game_main')}}"><img src="static/images/medievil_city_view_1.jpg" alt="Girl in a jacket"></a>
+            {% else %}
+            <h2 class="game_main_image_title"> {{village_data.city_name.capitalize()}}</h2>
+            <h2 class="village_image_city_level">Level: {{village_data.city_level}}</h2>
+            <a href="{{url_for('game_main')}}"><img src="static/images/medievil_village_view_1.jpg" alt="Girl in a jacket"></a>
+            {% endif%}
+
+    </div>
+
+    <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+        <h2 class="game_main_image_title"> Castle</h2>
+        <h2 class="village_image_city_level"> Level: {{village_data.barracks}}</h2>
+        <a  href="{{url_for('castle')}}"><img src="static/images/barracks_1.jpg" alt="barracks"></a>
+    </div>
+    <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+        <h2 class="game_main_image_title"> Farm</h2>
+        <h2 class="village_image_city_level"> Level: {{village_data.farm}}</h2>
+        <a  href="{{url_for('farm')}}"> <img src="static/images/farm.jpg" alt="farm image"> </a>
+    </div>
+    <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+        <h2 class="game_main_image_title"> Gold Mine</h2>
+        <h2 class="village_image_city_level"> Level: {{village_data.gold_mine}}</h2>
+        <a class="imageContainer" href="{{url_for('gold_mine')}}"><img src="static/images/gold_mine_1.jpg" alt="Girl in a jacket"></a>
+    </div>
+    <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+        <h2 class="game_main_image_title"> Stone Quarry</h2>
+        <h2 class="village_image_city_level"> Level: {{village_data.stone_quary}}</h2>
+        <a class="imageContainer" href="{{url_for('stone_quarry')}}"><img src="static/images/stone_quary.jpg" alt="Girl in a jacket"></a>
+    </div>
+    <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+        <h2 class="game_main_image_title"> Lumberjack</h2>
+        <h2 class="village_image_city_level"> Level: {{village_data.lumberjack}}</h2>
+        <a class="imageContainer" href="{{url_for('lumberjack')}}"><img src="static/images/forest_image_1.jpg" alt="Girl in a jacket"></a>
+    </div>
+    <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+        <h2 class="game_main_image_title"> City Wall</h2>
+        <h2 class="village_image_city_level"> Level: {{village_data.wall_level}}</h2>
+        <a class="imageContainer" href="{{url_for('wall')}}"><img src="static/images/city_wall_image.jpg" alt="City wall"></a>
+    </div>
+    <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+            <h2 class="game_main_image_title"> Wold Map</h2>
+            <a class="imageContainer" href="{{url_for('map')}}"><img src="static/images/kazakistan_map.jpg" alt="City wall"></a>
+        </div>
+
+
+
+        
+</div>
+<a style="position: relative; float: right; margin-bottom: 50px" class="btn btn-primary " href="{{url_for('game_main')}}"> Go back to Main</a>
+
+</div>
+
+
+
+
+ 
+{% endblock %}

@@ -1,0 +1,105 @@
+{% extends "game_main.html" %}
+{% block content %}
+<div class="col-12">
+    <div style=" text-align: center ;margin-bottom: 25px;">
+            <h3>King {{player.player_name}}, Thank you paying attetion to our workers in {{village_data.city_name}}</h3>
+            
+    </div>
+
+</div>
+
+<div class="game_main_row">
+<div class="col-12"  >
+    <div class=" col-sm-12 col-md-12 col-lg-4">
+        <div >
+            <h2 class="game_main_image_title"> Lumberjack </h2>
+            <h2 class="village_image_city_level"> Level: {{village_data.lumberjack}}</h2>
+            <a  href="{{url_for('village')}}"><img src="static/images/forest_image_1.jpg" alt="forest"></a>
+        </div>
+
+        <div >
+            <h4 > Cost for Next Level: <br> {{30 * (2 ** (village_data.lumberjack )) }} Gold and {{50 * (2 ** (village_data.lumberjack) )}} Stone</h4>
+            <a class="btn btn-primary" href="{{url_for('lumberjack_level_up')}}">Increase Lumberjack Level</a>
+        </div>
+        
+
+    </div>
+
+    <div class=" col-sm-12 col-md-12 col-lg-4">
+
+            <table class="table table-dark table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">Lumberjack Imformation</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Lumberjack Size:</td>
+                        <td>{{village_data.lumberjack}}</td>
+                       </tr>
+                      <tr>
+                        <td>Total Lumber Porduction Per Year</td>
+                        <td>{{population_data.lumberjack * 6 }}</td>
+                      </tr>
+                      <tr>
+                            <td>Lumber Workers:</td>
+                            <td>{{population_data.lumberjack}}</td>
+                        </tr>
+                        <tr>
+                            <td>Unassigned Poeple:</td>
+                            <td>{{population_data.unassingned_population}}</td>
+                        </tr>
+                        <tr>
+                            <td>Total Lumberjack Capatity to Assign Workers:</td>
+                            <td>{{village_data.lumberjack * 500}}</td>
+                        </tr>
+                    </tbody>
+                  </table>
+    
+
+        </div>
+
+
+        <div class=" col-sm-12 col-md-12 col-lg-4">
+            <div>
+                <h4>Lumberjack</h4>
+                <h6>Assign Workers </h6>
+                  <form action="{{ url_for('assin_lumber_workers') }}" method="POST">
+                      <select name="assin_lumber_workers" >
+                          <option value="1">Assing 1 Workers  </option>
+                          <option value="10">Assing 10 Workers</option>
+                          <option value="50">Assing 50 Workers</option>
+                          <option value="100">Assing 100 Workers</option>
+                          <option value="500">Assing 500 Workers</option>
+                          <option value="1000">Assing 1000 Workers</option>
+                        </select>
+                      <button type="submit" class="btn btn-primary " id="assign_lumber_workers">Assign</button>
+                  </form>
+                  <h6>Unassign Workers</h6>
+                  <form action="{{ url_for('unassin_lumber_workers') }}" method="POST">
+                      <select name="unassin_lumber_workers" >
+                          <option value="1">Unssing 1 Workers   </option>
+                          <option value="10">Unssing 10 Workers</option>
+                          <option value="50">Unssing 50 Workers</option>
+                          <option value="100">Unssing 100 Workers</option>
+                          <option value="500">Unssing 500 Workers</option>
+                          <option value="1000">Unssing 1000 Workers</option>
+                        </select>
+                      <button type="submit" class="btn btn-primary " id="unassign_lumber_workers">Unssign</button>
+                  </form>
+              </div>
+  
+ 
+      </div>
+          
+</div>
+<a style="position: relative; float: right; margin-bottom: 50px" class="btn btn-primary " href="{{url_for('village')}}"> Go back to Main</a>
+
+</div>
+
+
+
+
+ 
+{% endblock %}

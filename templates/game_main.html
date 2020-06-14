@@ -1,0 +1,251 @@
+{% extends "layout.html" %}
+
+{% from 'macros.html' import render_field %}
+
+
+{% block content %}
+<div style="text-align:end; margin-bottom: 25px;">
+        <a class="btn btn-primary" href="{{url_for('restart_game')}}"> Restart Game</a>
+        <a class="btn btn-primary" href="{{url_for('logout')}}">Log out</a>
+</div>
+<div >
+    <div class="game_main_row col-12">
+        <div class="col-12 col-sm-4 col-md-4 col-lg-2">
+            <li class="list-group-item">King: {{player.player_name.capitalize()}} </li>
+        </div>
+        <div class="col-12 col-sm-4 col-md-4 col-lg-2">
+            <li class="list-group-item">Gold: {{player.gold}}</li>
+        </div>
+        <div class="col-12 col-sm-4 col-md-4 col-lg-2">
+            <li class="list-group-item">Food: {{player.food}}</li>
+        </div>
+        <div class="col-12 col-sm-4 col-md-4 col-lg-2">
+            <li class="list-group-item">Wood: {{player.wood}}</li>
+        </div>    
+        <div class="col-12 col-sm-4 col-md-4 col-lg-2">
+            <li class="list-group-item">Stone: {{player.stone}}</li>
+        </div>
+        <div class="col-12 col-sm-4 col-md-4 col-lg-2">
+            <li class="list-group-item">Population: {{population_data.total_population}}</li>
+        </div>
+    </div>
+</div>
+
+<div class="game_year_div col-12">
+    <div class="game_year_element col-12">
+        <h1> {{player.game_year}} AD</h1>
+    </div> 
+
+    <div class=" game_year_element col-12">
+        <a class="btn btn-primary" href="{{url_for('next_year')}}"> Next Year</a>
+    </div> 
+
+</div>
+
+<div class="game_main col-12" id="header_message">
+    <h3>My King {{player.player_name.capitalize()}}, Year is {{player.game_year}} AD! </h3>
+    <h4> Your city is need some development before facing your enemies</h4>
+    <h4> Our enemies are in great fear!!!</h4>
+    
+</div>
+
+<div class="images_row col-12">
+    <div class="game_main_row col-12">
+        
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+            <div>
+            {% if population_data.total_population > 10000 %}
+            <h2 class="game_main_image_title"> {{village_data.city_name.capitalize()}}</h2>
+            <h2 class="village_image_city_level"> Level: {{village_data.city_level}}</h2>
+            <a class="imageContainer" href="{{url_for('village')}}"> <img src="static/images/medievil_city_view_1.jpg" alt="Girl in a jacket"> </a>
+            {% else %}
+            <h2 class="game_main_image_title"> {{village_data.city_name.capitalize()}}</h2>
+            <h2 class="village_image_city_level"> Level: {{village_data.city_level}}</h2>
+            <a  href="{{url_for('village')}}"> <img src="static/images/medievil_village_view_1.jpg" alt="Girl in a jacket"> </a>
+            {% endif%}
+            </div>
+            <div >
+                <a class="btn btn-primary" href="{{url_for('city_level_up')}}">Increase City Level</a>
+                <h6 > Cost for Next Level: <br> {{50 * (2 ** village_data.city_level)}} Gold and {{100 * (2 ** village_data.city_level)}} Stone</h6>
+            </div>
+        </div>
+
+
+        <div class=" col-sm-12 col-md-12 col-lg-6">
+            <a id="population_info_button"class="btn btn-primary" >Population Stats</a>
+            <a id="city_info_button"class="btn btn-primary" >City Information</a>
+            <a id="army_info_button"class="btn btn-primary" >Military Information</a>
+            <a id="economic_info_button"class="btn btn-primary" >Economic Information</a>
+            <table id= 'population_info_table'class="table table-active table-striped">
+                    <thead>
+                        <tr>
+                        <th scope="col">Population Statistics</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                        <td>Total Population:</td>
+                        <td>{{population_data.total_population }}</td>
+                        </tr>
+                        <tr>
+                        <td>Unassigned People:</td>
+                        <td>{{population_data.unassingned_population}}</td>
+                        </tr>
+                        <tr>
+                            <td>Farmers:</td>
+                            <td>{{population_data.farmer}}</td>
+                        </tr>
+                        <tr>
+                            <td>Stone Cutter:</td>
+                            <td>{{population_data.stone_worker}}</td>
+                        </tr>
+                        <tr>
+                            <td>Gold Miner:</td>
+                            <td>{{population_data.gold_miner}}</td>
+                        </tr>
+                        <tr>
+                            <td>Lumberjack:</td>
+                            <td>{{population_data.lumberjack}}</td>
+                        </tr>
+                    </tb>
+                </table>
+            <table id= 'army_info_table'class="table table-active table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Army</th>
+                        </tr>
+                        </thead>
+                    <tb>
+                        <tr>
+                        <td>Spearmen:</td>
+                        <td>{{population_data.spearman}}</td>
+                        </tr>
+                        <tr>
+                            <td>Swordsmen:</td>
+                            <td>{{population_data.swordsman}}</td>
+                        </tr>
+                        <tr>
+                            <td>Archers:</td>
+                            <td>{{population_data.archers}}</td>
+                        </tr>
+                        <tr>
+                            <td>Ligth_cavalry:</td>
+                            <td>{{population_data.ligth_cavalry}}</td>
+                        </tr>
+                        <tr>
+                            <td>Heavy_cavalry:</td>
+                            <td>{{population_data.heavy_cavalry}}</td>
+                        </tr>
+                        <tr>
+                            <td>Mounted_archer:</td>
+                            <td>{{population_data.mounted_archer}}</td>
+                        </tr>
+
+                    </tbody>
+                    </table>
+    
+                    <table id="city_info_table" class="table table-active table-striped o">
+                            <thead>
+                              <tr>
+                                <th scope="col">City information</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>City Level:</td>
+                                <td>{{village_data.city_level}}</td>
+                               </tr>
+                              <tr>
+                                <td>City Max-Population:</td>
+                                <td>{{village_data.population_max}}</td>
+                              </tr>
+                            </tb>
+                            <thead>
+                                  <tr>
+                                    <th scope="col">Buildings</th>
+                                  </tr>
+                                </thead>
+                            <tb>
+                                <tr>
+                                    <td>Castle Level:</td>
+                                    <td>{{village_data.barracks}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Wall Level:</td>
+                                    <td>{{village_data.wall_level}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Farm Level:</td>
+                                    <td>{{village_data.farm}}</td>
+                                </tr>
+    
+                                <tr>
+                                    <td>Gold Mine Level:</td>
+                                    <td>{{village_data.gold_mine}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Stone Quarry Level:</td>
+                                    <td>{{village_data.stone_quary}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Lumberjack Level:</td>
+                                    <td>{{village_data.lumberjack}}</td>
+                                </tr>
+                            </tbody>
+        
+                          </table>
+    
+                    <table id="economic_info_table" class="table table-active table-striped o">
+                        <thead>
+                            <tr>
+                            <th scope="col">Yearly Income</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Gold Production:</td>
+                            <td>+{{population_data.gold_miner * 1}}</td>
+                        </tr>
+                        <tr>
+                            <td>Food Production:</td>
+                            <td>+{{population_data.farmer * 10 }}</td>
+                        </tr>
+                        <tr>
+                            <td>Stone Production:</td>
+                            <td>+{{population_data.stone_worker * 3 }}</td>
+                        </tr>
+                        <tr>
+                            <td>Wood Production:</td>
+                            <td>+{{population_data.lumberjack * 5 }}</td>
+                        </tr>
+                        </tb>
+                        <thead>
+                            <tr>
+                            <th scope="col">Yearly Expences</th>
+                            </tr>
+                        </thead>
+                        <tb>
+                        <tr>
+                            <td>Military Maintain Cost:</td>
+                            <td> -{{ (population_data.mounted_archer*3 )+ (population_data.heavy_cavalry*5) +
+                                (population_data.ligth_cavalry*3 )+ ( population_data.archers * 2) + 
+                                (population_data.swordsman *2)+( population_data.spearman * 1)}} Gold
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Food Consumption:</td>
+                            <td> -{{population_data.total_population}} Food
+                            </td>
+                        </tr>
+                        </tbody>
+    
+                        </table>
+        </div>
+      
+    </div>
+
+
+</div>
+{% endblock %}

@@ -1,0 +1,28 @@
+
+{% extends "layout.html" %}
+{% block index_content %}
+<p> this is the paragraf in index html</p>
+
+<ul>
+<h2> this is a post list </h2>
+{% for post in stream %}
+<li> {{post.content}}</li>
+{% endfor %}
+</ul>
+
+{% endblock %}
+
+<!-- and ending tag 
+<!DOCTYPE html>
+<html>
+<head>
+<title>The Game</title>
+</head>
+
+<body>
+<h1>Flask Game</h1>
+
+
+</body>
+
+</html>-->

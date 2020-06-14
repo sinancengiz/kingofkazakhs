@@ -1,0 +1,298 @@
+{% extends "game_main.html" %}
+{% block content %}
+<div class="col-12">
+    <div style=" text-align: center ;margin-bottom: 25px;">
+            <h3>King {{player.player_name.capitalize()}}, Your Army is ready to fight!</h3>
+            
+    </div>
+
+</div>
+
+<div class="game_main_row">
+<div class="col-12"   >
+     <a style="position: relative; float: right; margin-bottom: 50px" class="btn btn-primary " href="{{url_for('village')}}"> Go back to City View</a>
+     <a id="castle_info_button" class="btn btn-primary" >Army Stats</a>
+    <table id="castle_info_table" class="table table-active table-striped">
+        <thead>
+          <tr>
+              <th scope="col">Army</th>
+          </tr>
+          </thead>
+        <tb>
+            <tr>
+                <th >Type</th>
+                <th >Total Amount</th>
+                <th >Yearly Unit Maintain Cost</th>
+                <th >Yearly Unit Total Maintain Cost</th>
+            </tr>
+            <tr>
+            <td>Spearmen:</td>
+            <td>{{population_data.spearman}}</td>
+            <td> 1 Gold</td>
+            <td>{{population_data.spearman * 1}} Gold</td>
+            </tr>
+            <tr>
+                <td>Swordsmen:</td>
+                <td>{{population_data.swordsman}}</td>
+                <td> 2 Gold</td>
+                <td>{{population_data.swordsman * 2}} Gold</td>
+            </tr>
+            <tr>
+                <td>Archers:</td>
+                <td>{{population_data.archers}}</td>
+                <td> 2 Gold</td>
+                <td>{{population_data.archers * 2}} Gold</td>
+            </tr>
+            <tr>
+                <td>Ligth_cavalry:</td>
+                <td>{{population_data.ligth_cavalry}}</td>
+                <td> 3 Gold</td>
+                <td>{{population_data.ligth_cavalry * 3}} Gold</td>
+            </tr>
+            <tr>
+                <td>Heavy_cavalry:</td>
+                <td>{{population_data.heavy_cavalry}}</td>
+                <td> 5 Gold</td>
+                <td>{{population_data.heavy_cavalry * 5}} Gold</td>
+            </tr>
+            <tr>
+                <td>Mounted_archer:</td>
+                <td>{{population_data.mounted_archer}}</td>
+                <td> 3 Gold</td>
+                <td>{{population_data.mounted_archer * 3}} Gold</td>
+            </tr>
+            <tr>
+                <td>Total:</td>
+                <td>{{population_data.mounted_archer + population_data.heavy_cavalry +
+                     population_data.ligth_cavalry + population_data.archers + 
+                     population_data.swordsman + population_data.spearman}}</td>
+                <td> Total Yearly Army Maintain:</td>
+                <td>{{ (population_data.mounted_archer*3 )+ (population_data.heavy_cavalry*5) +
+                        (population_data.ligth_cavalry*3 )+ ( population_data.archers * 2) + 
+                        (population_data.swordsman *2)+( population_data.spearman * 1)}} Gold</td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+
+<div class="col-12"   >
+    <div class="col-12 col-sm-12 col-md-6 col-lg-4" >
+      <div>
+        <h2 class="game_main_image_title" style="color:black"> Spearman</h2>
+        <h2 class="village_image_city_level" style="color:black">Total: {{population_data.spearman}}</h2>
+        <img src="static/images/spearman.jpg" alt="spearman">
+      </div>
+        <div >
+            <h6>Training a Spearman Cost: 10 Gold , 50 Food</h6>
+              <form action="{{ url_for('assin_spearman') }}" method="POST">
+                  <select name="assin_spearman" >
+                      <option value="1">Train 1 Spearman </option>
+                      <option value="10">Train 10 Spearman</option>
+                      <option value="50">Train 50 Spearman</option>
+                      <option value="100">Train 100 Spearman</option>
+                      <option value="500">Train 500 Spearman</option>
+                      <option value="1000">Train 1000 Spearman</option>
+                    </select>
+                  <button type="submit" class="btn btn-primary " id="assign_spearman">Train</button>
+              </form>
+              
+              <h6>Fire Spearmen</h6>
+              <form action="{{ url_for('unassin_spearman') }}" method="POST">
+                  <select name="unassin_spearman" >
+                      <option value="1">Fire 1 Spearman </option>
+                      <option value="10">Fire 10 Spearman</option>
+                      <option value="50">Fire 50 Spearman</option>
+                      <option value="100">Fire 100 Spearman</option>
+                      <option value="500">Fire 500 Spearman</option>
+                      <option value="1000">Fire 1000 Spearman</option>
+                    </select>
+                  <button type="submit" class="btn btn-primary " id="unassin_spearman">Fire</button>
+              </form>
+          </div>
+    </div>
+    <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+      <div>
+          <h2 class="game_main_image_title" style="color:black"> Swordsman</h2>
+          <h2 class="village_image_city_level" style="color:black"> Total: {{population_data.swordsman}}</h2>
+          <img src="static/images/swordsman.jpg" alt="swordsman">
+      </div>
+
+      <div class="train_soldiers">
+          <h6>Training a Swordsman Cost: 20 Gold , 50 Food</h6>
+            <form action="{{ url_for('assin_swordsman') }}" method="POST">
+                <select name="assin_swordsman" >
+                    <option value="1">Train 1 Swordsman </option>
+                    <option value="10">Train 10 Swordsman</option>
+                    <option value="50">Train 50 Swordsman</option>
+                    <option value="100">Train 100 Swordsman</option>
+                    <option value="500">Train 500 Swordsman</option>
+                    <option value="1000">Train 1000 Swordsman</option>
+                  </select>
+                <button type="submit" class="btn btn-primary " id="assin_swordsman">Train</button>
+            </form>
+            <h6>Fire Swordsmen</h6>
+            <form action="{{ url_for('unassin_swordsman') }}" method="POST">
+                <select name="unassin_swordsman" >
+                    <option value="1">Fire 1 Swordsman </option>
+                    <option value="10">Fire 10 Swordsman</option>
+                    <option value="50">Fire 50 Swordsman</option>
+                    <option value="100">Fire 100 Swordsman</option>
+                    <option value="500">Fire 500 Swordsman</option>
+                    <option value="1000">Fire 1000 Swordsman</option>
+                  </select>
+                <button type="submit" class="btn btn-primary " id="unassin_swordsman">Fire</button>
+            </form>
+        </div>
+
+    </div>
+    <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+      <div>
+          <h2 class="game_main_image_title" style="color:black"> Archers</h2>
+          <h2 class="village_image_city_level" style="color:black"> Total: {{population_data.archers}}</h2>
+          <img src="static/images/archers.jpg" alt="archers">
+      </div>
+
+      
+      <div class="train_soldiers">
+          <h6>Training a Archers Cost: 20 Gold , 30 Food, 20 Wood</h6>
+            <form action="{{ url_for('assin_archers') }}" method="POST">
+                <select name="assin_archers" >
+                    <option value="1">Train 1 Archers </option>
+                    <option value="10">Train 10 Archers</option>
+                    <option value="50">Train 50 Archers</option>
+                    <option value="100">Train 100 Archers</option>
+                    <option value="500">Train 500 Archers</option>
+                    <option value="1000">Train 1000 Archers</option>
+                  </select>
+                <button type="submit" class="btn btn-primary " id="assin_archers">Train</button>
+            </form>
+            <h6>Fire Archers</h6>
+            <form action="{{ url_for('unassin_archers') }}" method="POST">
+                <select name="unassin_archers" >
+                    <option value="1">Fire 1 Archers </option>
+                    <option value="10">Fire 10 Archers</option>
+                    <option value="50">Fire 50 Archers</option>
+                    <option value="100">Fire 100 Archers</option>
+                    <option value="500">Fire 500 Archers</option>
+                    <option value="1000">Fire 1000 Archers</option>
+                  </select>
+                <button type="submit" class="btn btn-primary " id="unassign_archers">Fire</button>
+            </form>
+        </div>
+
+    </div>
+    <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+      <div>
+          <h2 class="game_main_image_title" style="color:black"> Ligth_cavalry</h2>
+          <h2 class="village_image_city_level" style="color:black"> Total: {{population_data.ligth_cavalry}}</h2>
+          <img src="static/images/light_cavalry.png" alt="barracks">
+      </div>
+      <div class="train_soldiers">
+          <h6>Trainin a Ligth Cavalry Cost: 40 Gold , 100 Food</h6>
+            <form action="{{ url_for('assin_ligth_cavalry') }}" method="POST">
+                <select name="assin_ligth_cavalry" >
+                    <option value="1">Train 1 Ligth Cavalry </option>
+                    <option value="10">Train 10 Ligth Cavalry</option>
+                    <option value="50">Train 50 Ligth Cavalry</option>
+                    <option value="100">Train 100 Ligth Cavalry</option>
+                    <option value="500">Train 500 Ligth Cavalry</option>
+                    <option value="1000">Train 1000 Ligth Cavalry</option>
+                  </select>
+                <button type="submit" class="btn btn-primary " id="assin_ligth_cavalry">Train</button>
+            </form>
+            <h6>Fire Ligth Cavalry</h6>
+            <form action="{{ url_for('unassin_ligth_cavalry') }}" method="POST">
+                <select name="unassin_ligth_cavalry" >
+                    <option value="1">Fire 1 Ligth Cavalry </option>
+                    <option value="10">Fire 10 Ligth Cavalry</option>
+                    <option value="50">Fire 50 Ligth Cavalry</option>
+                    <option value="100">Fire 100 Ligth Cavalry</option>
+                    <option value="500">Fire 500 Ligth Cavalry</option>
+                    <option value="1000">Fire 1000 Ligth Cavalry</option>
+                  </select>
+                <button type="submit" class="btn btn-primary " id="unassign_ligth_cavalry">Fire</button>
+            </form>
+        </div>
+
+    </div>
+    <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+      <div>
+          <h2 class="game_main_image_title" style="color:black"> Heavy_cavalry</h2>
+          <h2 class="village_image_city_level" style="color:black"> Total: {{population_data.heavy_cavalry}}</h2>
+          <img src="static/images/heavy_cavalry.png" alt="farm image">
+      </div>
+      <div class="train_soldiers">
+          <h6>Training a Heavy Cavalry Cost: 80 Gold , 150 Food</h6>
+            <form action="{{ url_for('assin_heavy_cavalry') }}" method="POST">
+                <select name="assin_heavy_cavalry" >
+                    <option value="1">Train 1 Heavy Cavalry </option>
+                    <option value="10">Train 10 Heavy Cavalry</option>
+                    <option value="50">Train 50 Heavy Cavalry</option>
+                    <option value="100">Train 100 Heavy Cavalry</option>
+                    <option value="500">Train 500 Heavy Cavalry</option>
+                    <option value="1000">Train 1000 Heavy Cavalry</option>
+                  </select>
+                <button type="submit" class="btn btn-primary " id="assign_heavy_cavalry">Train</button>
+            </form>
+            <h6>Fire Heavy Cavalry</h6>
+            <form action="{{ url_for('unassin_heavy_cavalry') }}" method="POST">
+                <select name="unassin_heavy_cavalry" >
+                    <option value="1">Fire 1 Heavy Cavalry </option>
+                    <option value="10">Fire 10 Heavy Cavalry</option>
+                    <option value="50">Fire 50 Heavy Cavalry</option>
+                    <option value="100">Fire 100 Heavy Cavalry</option>
+                    <option value="500">Fire 500 Heavy Cavalry</option>
+                    <option value="1000">Fire 1000 Heavy Cavalry</option>
+                  </select>
+                <button type="submit" class="btn btn-primary " id="unassign_heavy_cavalry">Fire</button>
+            </form>
+        </div>
+
+    </div>
+    <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+      <div>
+          <h2 class="game_main_image_title" style="color:black"> Mounted_archer</h2>
+          <h2 class="village_image_city_level" style="color:black"> Total: {{population_data.mounted_archer}}</h2>
+          <img src="static/images/mounted_archer.jpg" alt="Girl in a jacket">
+      </div>
+      <div class="train_soldiers">
+          <h6>Training a Mounted Archer Cost: 40 Gold , 50 Food, 50 Wood</h6>
+            <form action="{{ url_for('assin_mounted_archer') }}" method="POST">
+                <select name="assin_mounted_archer" >
+                    <option value="1">Train 1 Mounted Archer </option>
+                    <option value="10">Train 10 Mounted Archer</option>
+                    <option value="50">Train 50 Mounted Archer</option>
+                    <option value="100">Train 100 Mounted Archer</option>
+                    <option value="500">Train 500 Mounted Archer</option>
+                    <option value="1000">Train 1000 Mounted Archer</option>
+                  </select>
+                <button type="submit" class="btn btn-primary " id="assign_mounted_archer">Train</button>
+            </form>
+            <h6>Fire Mounted Archer</h6>
+            <form action="{{ url_for('unassin_mounted_archer') }}" method="POST">
+                <select name="unassin_mounted_archer" >
+                    <option value="1">Fire 1 Mounted Archer </option>
+                    <option value="10">Fire 10 Mounted Archer</option>
+                    <option value="50">Fire 50 Mounted Archer</option>
+                    <option value="100">Fire 100 Mounted Archer</option>
+                    <option value="500">Fire 500 Mounted Archer</option>
+                    <option value="1000">Fire 1000 Mounted Archer</option>
+                  </select>
+                <button type="submit" class="btn btn-primary " id="unassign_mounted_archer">Fire</button>
+            </form>
+        </div>
+
+    </div>
+          
+</div>
+
+<a style="position: relative; float: right; margin-bottom: 50px" class="btn btn-primary " href="{{url_for('village')}}"> Go back to City View</a>
+
+</div>
+
+
+
+
+ 
+{% endblock %}

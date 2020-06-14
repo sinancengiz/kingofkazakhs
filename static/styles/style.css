@@ -1,0 +1,117 @@
+body{
+    background-image:linear-gradient(blue, transparent 95%), 
+                    linear-gradient(0deg, white, transparent ),
+                    url("/static/images/horseman.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 700px;
+    padding:50px;
+        
+}
+
+main{
+    text-align: center;
+    color:whitesmoke;
+
+}
+
+header{
+    text-align: center;
+    color:white;
+    margin-bottom: 100px;
+}
+
+.heading{
+    margin-bottom :100px;
+}
+
+.field{
+    margin-bottom:10px;
+}
+
+.login_form{
+    text-align: center;
+    margin-top:300px;
+}
+
+.game_main{
+    text-align: center;
+    color:white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin-bottom: 100px;
+}
+
+.game_main_row div{
+    position: relative;
+    float: left;
+    padding-bottom: 25px;
+    
+}
+
+.game_main_row li{
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color:gold;
+    background: rgb(81, 81, 228)
+}
+
+
+
+
+img{border-style: solid; 
+    border-radius: 10px;
+    width: 100%;
+    height: 300px;
+    display: block;
+ 
+    
+}
+.images_row{
+    position: relative;
+    float: left;
+    
+}
+
+.game_main_image_title {
+    color:white;
+    position: absolute;
+        z-index: 999;
+        margin: 0 auto;
+        left: 10%;
+        right: 0;
+        top: 70%;
+
+}
+
+.village_image_city_level{
+    color:white;
+    position: absolute;
+        z-index: 999;
+        margin: 0 auto;
+        right: 10%;
+        top: 10%;
+
+}
+
+.game_year_element{float: right;
+    height: 50px;
+    text-align: center
+}
+
+
+select:focus {
+    border: 5px solid blue;
+
+  }
+select{width: 90%;
+margin:5px;}
+
+#map{
+    width: 100%;
+    height: 600px;
+    display: block;
+    border-style: solid;
+    border-color: balck;
+    border-radius: 50px;
+    border-width: 10px;
+}
