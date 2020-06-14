@@ -50,8 +50,14 @@ function create_map(response) {
     L.geoJSON(geo_json, {
         style: function(feature) {
             switch (feature.properties.side) {
-                case 'Enemy': return {color: "red"};
-                case 'Invaded':   return {color: "blue"};
+                case '1': return {color: "yellow"};
+                case '2':   return {color: "Red"};
+                case '3': return {color: "blue"};
+                case '4':   return {color: "green"};
+                case '5': return {color: "purple"};
+                case '6':   return {color: "lightblue"};
+                case '7': return {color: "orange"};
+                case '8':   return {color: "pink"};
             }
         }
     }).addTo(my_map);

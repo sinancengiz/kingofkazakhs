@@ -4,7 +4,7 @@ var geo_json = {
       {
         "type": "Feature",
         "properties": {
-            "side":"Enemy",
+            "side":"1",
           "stroke": "#555555",
           "stroke-width": 2,
           "stroke-opacity": 1,
@@ -65,7 +65,7 @@ var geo_json = {
       },
       {
         "type": "Feature",
-        "properties": {"side":"Enemy"},
+        "properties": {"side":"2"},
         "geometry": {
           "type": "Polygon",
           "coordinates": [
@@ -104,7 +104,7 @@ var geo_json = {
       },
       {
         "type": "Feature",
-        "properties": {"side":"Enemy"},
+        "properties": {"side":"4"},
         "geometry": {
           "type": "Polygon",
           "coordinates": [
@@ -139,7 +139,7 @@ var geo_json = {
       },
       {
         "type": "Feature",
-        "properties": {"side":"Invaded"},
+        "properties": {"side":"3"},
         "geometry": {
           "type": "Polygon",
           "coordinates": [
@@ -170,7 +170,7 @@ var geo_json = {
       },
       {
         "type": "Feature",
-        "properties": {"side":"Enemy"},
+        "properties": {"side":"5"},
         "geometry": {
           "type": "Polygon",
           "coordinates": [
@@ -221,7 +221,7 @@ var geo_json = {
       },
       {
         "type": "Feature",
-        "properties": {"side":"Enemy"},
+        "properties": {"side":"6"},
         "geometry": {
           "type": "Polygon",
           "coordinates": [
@@ -260,7 +260,7 @@ var geo_json = {
       },
       {
         "type": "Feature",
-        "properties": {"side":"Enemy"},
+        "properties": {"side":"7"},
         "geometry": {
           "type": "Polygon",
           "coordinates": [
@@ -311,7 +311,7 @@ var geo_json = {
       },
       {
         "type": "Feature",
-        "properties": {"side":"Enemy"},
+        "properties": {"side":"8"},
         "geometry": {
           "type": "Polygon",
           "coordinates": [

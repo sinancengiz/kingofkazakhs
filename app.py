@@ -613,9 +613,6 @@ def restart_game():
 
     return redirect(url_for('game_main'))
 
-
-
-
 if __name__ == "__main__":
     models.initialize()
-    app.run( )
+    app.run(debug=True, port =5009)
