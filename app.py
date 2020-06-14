@@ -37,6 +37,13 @@ def after_request(response):
     g.db.close()
     return response
 
+# This hook ensures that the connection is closed when we've finished
+# processing the request.
+@app.teardown_request
+def _db_close(response):
+    if not g.db.is_closed():
+        g.db.close()
+
 @app.route("/")
 def index():
     return render_template("index.html")
